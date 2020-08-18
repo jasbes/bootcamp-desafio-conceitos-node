@@ -50,7 +50,9 @@ app.delete("/repositories/:id", (request, response) => {
     return response.status(400).json({error: 'Repository does not exist.'});
   }
 
-  return response.status(204).json(repositories.splice(index, 1));
+  repositories.splice(index, 1);
+
+  return response.status(204).send();
 });
 
 app.post("/repositories/:id/like", (request, response) => {
